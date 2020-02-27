@@ -14,8 +14,8 @@ class Timer:
         self.end = time.clock()
         self.interval = self.end - self.start
 
-
 class PointReader:
+
     def __init__(self, data_path):
         self.data_path = Path(data_path) / 'data'
         self.pcap_path = self.data_path / 'pcap'
@@ -185,4 +185,6 @@ class PointProcessing:
             self.processed_pcap = pcap_index
             self.pcap_file_list = self.local_point_reader.read_pcap(pcap_index)
             return self.pcap_file_list
-        return None
+
+        if pcap_index == self.processed_pcap:
+            return self.pcap_file_list
